@@ -3,10 +3,14 @@ int state = 0;
 int start = 0;
 int time = 0;
 
+ArrayList<Stuff> bob;
+
 //milliseconds in ...
 int SECOND = 1000;
 int MINUTE = SECOND*60;
 int HOUR = MINUTE*60;
+
+class Stuff {
 
 void setup() {
   frameRate(100);
@@ -36,7 +40,7 @@ void drawClockface() {
   //lines
   pushMatrix();
   stroke(50);
-  for(int i = 1; i <= 60; i++) {   
+  for(int i = 1; i <= 60; i++) {
     if(i%5 == 0) {
       strokeWeight(3);
     } else {
@@ -80,7 +84,7 @@ void draw() {
   background(250);
   translate(width/2, height/2);
   drawClockface();
-  
+
   if(state == 0) {
     time = calculateTime();
   } else if(state == 1) {
@@ -96,4 +100,6 @@ void draw() {
 void mouseClicked() {
   state = ++state%4;
   start = millis();
+}
+
 }
