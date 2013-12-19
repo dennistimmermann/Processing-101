@@ -27,7 +27,8 @@ class Bullet extends Entity {
                 }
 
                 if(this.source instanceof Enemy && e instanceof Player) {
-                    e.delete = true;
+                    this.delete = true;
+                    e.health--;
                 }
             }
         }

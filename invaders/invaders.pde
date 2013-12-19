@@ -13,7 +13,6 @@ void setup() {
     imageMode(CENTER);
     textAlign(CENTER, CENTER);
     font = loadFont("o48.vlw");
-    textFont(font, 48);
 
     game = new Game();
 }

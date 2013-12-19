@@ -3,6 +3,7 @@ class Game {
     Player player;
     int enemyCount, playerCount;
     float lowestEnemy;
+    int lives = 3;
 
     Game() {
         Entity.entities.clear();
@@ -10,7 +11,7 @@ class Game {
 
         for(int j = 0; j < 4; j++) {
             for(int i = 0; i < 10; i++) {
-                new Enemy( 30 + i*60, 30 + j*40);
+                new Enemy( 30 + i*60, 50 + j*40);
             }
         }
 
@@ -20,6 +21,8 @@ class Game {
     void update() {
         background(0);
 
+        println("player.health: "+player.health);
+
         enemyCount = playerCount = 0;
         lowestEnemy = 0;
 
@@ -28,18 +31,18 @@ class Game {
                 enemyCount++;
                 lowestEnemy = max(lowestEnemy, e.coords.y);
             }
-            if(e instanceof Player) {
-                playerCount++;
-            }
         }
 
-        fill(255);
+        textFont(font, 18);
+        text("lives: "+player.health, width/2, 10);
 
+        fill(255);
+        textFont(font, 48);
         if(enemyCount == 0) {
             println("won");
             text("YOU WIN!", width/2, height/2);
         }
-        else if(playerCount == 0 || lowestEnemy > height-10) {
+        else if(player.health <= 0 || lowestEnemy > height-10) {
             println("lost");
             text("YOU LOSE", width/2, height/2);
         }

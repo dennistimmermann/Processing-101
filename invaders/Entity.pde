@@ -3,6 +3,7 @@ static abstract class Entity {
     PVector coords;
     int w, h;
     boolean visible, delete;
+    int health;
 
     static ArrayList<Entity> entities = new ArrayList<Entity>();
     static ArrayList<Entity> queue = new ArrayList<Entity>();
@@ -14,6 +15,7 @@ static abstract class Entity {
         visible = true;
         delete = false;
         queue.add(this);
+        health = 3;
     }
 
     abstract void draw();
